@@ -2,7 +2,7 @@
 
 set -e  # اگه خطا پیش اومد، اسکریپت متوقف شه
 
-cd /home/ch/chegah
+cd /home/che/AmlakChegah
 
 echo "🧲 Pulling latest code..."
 git reset --hard
