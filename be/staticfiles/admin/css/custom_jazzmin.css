@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazir:wght@300;400;500;600;700&display=swap');
+
+body, .main-sidebar, .content-wrapper, .main-header {
+    font-family: 'Vazir', 'Tahoma', sans-serif !important;
+}
+
+/* تنظیمات RTL */
+.main-sidebar {
+    right: 0;
+    left: auto;
+}
+
+.content-wrapper {
+    margin-right: 250px;
+    margin-left: 0;
+}
+
+/* کاستومایز رنگ‌ها */
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+}
+
+.card-header {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+}

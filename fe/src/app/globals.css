@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Dana-Regular";
+  src: url("/font/Dana-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Dana-Medium";
+  src: url("/font/Dana-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Dana-Bold";
+  src: url("/font/Dana-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Dana-Black";
+  src: url("/font/Dana-Black.ttf") format("truetype");
+}
+
+@theme {
+  --color-white: #ffffff;
+  --color-primary: #192a51;
+  --color-secendery: #967aa1;
+  --color-hover: #aaa1c8;
+  --color-hover-min: #D5C6E0;
+  --color-gradient: linear-gradient(to right top, #967aa1, #192a51);
+  --font-dana-regular: "Dana-Regular", system-ui, sans-serif;
+  --font-dana-medium: "Dana-Medium", system-ui, sans-serif;
+  --font-dana-bold: "Dana-Bold", system-ui, sans-serif;
+  --font-dana-black: "Dana-Black", system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--font-dana-regular);
+}
+
+h1 {
+  font-family: var(--font-dana-black);
+}
+
+h2,
+h3,
+Link {
+  font-family: var(--font-dana-bold);
+}
+
+h4,
+h5,
+h6 {
+  font-family: var(--font-dana-medium);
+}
+
+p {
+  font-family: var(--font-dana-regular);
+}
+
+a {
+  text-decoration: none;
+}
+
+button,
+.button {
+  cursor: pointer;
+}

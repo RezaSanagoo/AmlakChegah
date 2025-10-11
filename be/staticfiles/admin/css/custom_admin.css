@@ -1,0 +1,396 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazir:wght@300;400;500;600;700&display=swap');
+
+/* تنظیمات کلی فونت فارسی */
+body, html, .form-row label, .field-box, .help, .errorlist {
+    font-family: 'Vazir', 'Tahoma', 'Arial', sans-serif !important;
+    direction: rtl;
+    text-align: right;
+}
+
+/* هدر پنل ادمین */
+#header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    border-bottom: none;
+}
+
+#header h1, #header h1 a:link, #header h1 a:visited {
+    color: white !important;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+#header a:link, #header a:visited {
+    color: #e8f0fe !important;
+}
+
+/* برند سایت */
+#branding h1 {
+    font-size: 24px;
+    margin: 0;
+    padding: 15px 20px;
+}
+
+/* منوی کاربری */
+#user-tools {
+    padding: 15px 20px;
+    font-weight: 500;
+}
+
+/* صفحه اصلی ادمین */
+.dashboard .module {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    margin: 20px 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.dashboard .module:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.module h2, .module caption, .inline-group h2 {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+    font-weight: 500;
+    padding: 15px 20px;
+    margin: 0;
+    font-size: 16px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.module table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.module th, .module td {
+    padding: 12px 20px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+/* دکمه‌ها */
+.button, input[type=submit], input[type=button], .submit-row input, button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.button:hover, input[type=submit]:hover, input[type=button]:hover, .submit-row input:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+}
+
+.button:active, input[type=submit]:active, input[type=button]:active {
+    transform: translateY(0);
+}
+
+/* دکمه‌های خطرناک */
+.deletelink, .deletelink-box {
+    background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%) !important;
+}
+
+.deletelink:hover, .deletelink-box:hover {
+    background: linear-gradient(135deg, #e53e3e 0%, #dd2476 100%) !important;
+    box-shadow: 0 6px 20px rgba(255, 65, 108, 0.4);
+}
+
+/* جداول */
+#result_list {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    border: none;
+    background: white;
+}
+
+#result_list thead th {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    font-weight: 500;
+    padding: 15px 12px;
+    border: none;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+#result_list thead th a:link, #result_list thead th a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+#result_list tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+#result_list tbody tr:nth-child(even) {
+    background-color: #f8f9ff;
+}
+
+#result_list tbody tr:hover {
+    background-color: #e8f0fe;
+}
+
+#result_list tbody td {
+    padding: 12px;
+    border-bottom: 1px solid #e1e5e9;
+}
+
+/* فرم‌ها */
+.form-row {
+    background: white;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border: 1px solid #e1e5e9;
+}
+
+.form-row label {
+    font-weight: 500;
+    color: #2d3748;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* فیلدهای ورودی */
+input[type="text"], input[type="password"], input[type="email"], 
+input[type="number"], input[type="url"], input[type="tel"], 
+select, textarea {
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'Vazir', 'Tahoma', sans-serif;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, 
+input[type="email"]:focus, input[type="number"]:focus, 
+input[type="url"]:focus, input[type="tel"]:focus,
+select:focus, textarea:focus {
+    border-color: #667eea;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    background-color: #f7fafc;
+}
+
+/* چک باکس و رادیو */
+input[type="checkbox"], input[type="radio"] {
+    margin-left: 8px;
+    transform: scale(1.2);
+}
+
+/* پیام‌های سیستم */
+.messagelist {
+    margin: 20px 0;
+}
+
+.messagelist li {
+    padding: 15px 20px;
+    margin: 10px 0;
+    border-radius: 8px;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.messagelist .success {
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+    color: white;
+}
+
+.messagelist .error {
+    background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%);
+    color: white;
+}
+
+.messagelist .warning {
+    background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
+    color: white;
+}
+
+.messagelist .info {
+    background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+    color: white;
+}
+
+/* نوار کناری */
+#changelist-sidebar {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    padding: 20px;
+    margin-right: 20px;
+}
+
+#changelist-sidebar h2 {
+    background: linear-gradient(135deg, #805ad5 0%, #6b46c1 100%);
+    color: white;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin: 0 0 15px 0;
+}
+
+/* فیلترها */
+#changelist-filter h2 {
+    background: linear-gradient(135deg, #38b2ac 0%, #319795 100%);
+    color: white;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+#changelist-filter ul {
+    background: white;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+#changelist-filter li {
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+#changelist-filter li:hover {
+    background-color: #f7fafc;
+}
+
+#changelist-filter li.selected {
+    background-color: #e6fffa;
+    font-weight: 500;
+}
+
+/* جستجو */
+#toolbar {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    margin-bottom: 20px;
+}
+
+#searchbar {
+    padding: 12px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 14px;
+    width: 300px;
+    font-family: 'Vazir', 'Tahoma', sans-serif;
+}
+
+#searchbar:focus {
+    border-color: #667eea;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* صفحه‌بندی */
+.paginator {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    margin-top: 20px;
+    text-align: center;
+}
+
+.paginator a, .paginator .this-page {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 0 4px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.paginator a {
+    background: #f7fafc;
+    color: #4a5568;
+}
+
+.paginator a:hover {
+    background: #667eea;
+    color: white;
+}
+
+.paginator .this-page {
+    background: #667eea;
+    color: white;
+    font-weight: 500;
+}
+
+/* ریسپانسیو */
+@media (max-width: 768px) {
+    .dashboard .module {
+        margin: 10px;
+    }
+    
+    #result_list {
+        font-size: 14px;
+    }
+    
+    #result_list th, #result_list td {
+        padding: 8px 6px;
+    }
+    
+    .form-row {
+        padding: 15px;
+        margin: 10px 0;
+    }
+    
+    #searchbar {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .button, input[type=submit], input[type=button] {
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+}
+
+/* انیمیشن‌های ظریف */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.dashboard .module, #result_list, .form-row {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* اسکرول بار کاستوم */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+}
