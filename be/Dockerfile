@@ -5,6 +5,7 @@ WORKDIR /app
 # فقط در صورت تغییر در requirements.txt نصب پکیج‌ها دوباره انجام می‌شود
 COPY requirements.txt ./
 
+RUN sed -i 's|deb.debian.org|mirror.yandex.ru|g' /etc/apt/sources.list
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     libpq-dev \
