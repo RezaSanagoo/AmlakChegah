@@ -20,3 +20,4 @@ jobs:
           script: |
             cd Chegah
             ./deploy.sh
+          timeout: 30m
