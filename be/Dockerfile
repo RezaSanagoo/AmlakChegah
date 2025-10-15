@@ -4,11 +4,13 @@ WORKDIR /app
 
 COPY requirements.txt ./
 
-# استفاده از mirror سریع‌تر و نصب پکیج‌ها
+# ✅ mirror اصلاح‌شده و نصب پکیج‌ها
 RUN if [ -f /etc/apt/sources.list ]; then \
         sed -i 's|deb.debian.org|mirror.yandex.ru|g' /etc/apt/sources.list; \
     elif [ -f /etc/apt/sources.list.d/debian.sources ]; then \
         sed -i 's|deb.debian.org|mirror.yandex.ru|g' /etc/apt/sources.list.d/debian.sources; \
+    else \
+        echo "⚠️ No sources.list found — using default Debian mirrors."; \
     fi \
  && apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
