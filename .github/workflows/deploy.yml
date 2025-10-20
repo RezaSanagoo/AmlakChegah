@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    
       - name: Execute SSH on server
         uses: appleboy/ssh-action@v1.0.0
         with:
@@ -19,5 +20,6 @@ jobs:
           port: ${{ secrets.SERVER_PORT }}
           script: |
             cd AmlakChegah
+            chmod +x ./deploy.sh
             ./deploy.sh
           timeout: 30m
