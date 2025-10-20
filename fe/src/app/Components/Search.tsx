@@ -35,7 +35,7 @@ export default function SearchBox() {
     setResults([]);
     try {
       const res = await fetch(
-        `https://api.amlakfallah.com/api/prop/property/search/?q=${encodeURIComponent(query)}`
+        `http://194.60.231.96:8020//api/prop/property/search/?q=${encodeURIComponent(query)}`
       );
       const data = await res.json();
       setResults(data);
@@ -79,7 +79,7 @@ export default function SearchBox() {
                 <div className="w-22 h-22 rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center">
                   {item.image ? (
                     <img
-                      src={"https://api.amlakfallah.com" + item.image}
+                      src={"http://194.60.231.96:8020/" + item.image}
                       alt={item.title}
                       className="object-cover w-full h-full"
                     />

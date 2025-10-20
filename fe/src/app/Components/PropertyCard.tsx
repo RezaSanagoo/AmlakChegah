@@ -39,7 +39,7 @@ const PropertyCard = ({ item }: PropertyCardProps) => {
           <div className="relative overflow-hidden">
           {item.image ? (
             <img
-              src={"https://api.amlakfallah.com" + item.image}
+              src={"http://194.60.231.96:8020/" + item.image}
               alt={item.title}
               width={500}
               height={220}

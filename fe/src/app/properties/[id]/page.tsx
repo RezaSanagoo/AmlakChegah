@@ -79,7 +79,7 @@ export default function PropertyDetailPage({ params }: { params: Promise<{ id: s
   // گرفتن اطلاعات ملک
   useEffect(() => {
     setLoading(true);
-    fetch(`https://api.amlakfallah.com/api/prop/property/${id}/`)
+    fetch(`http://194.60.231.96:8020//api/prop/property/${id}/`)
       .then(async (r) => {
         if (!r.ok) throw new Error("not found");
         return r.json();
@@ -88,7 +88,7 @@ export default function PropertyDetailPage({ params }: { params: Promise<{ id: s
         setProperty(data);
         setLoading(false);
         if (data.consultant) {
-          fetch(`https://api.amlakfallah.com/api/users/consultant/${data.consultant}/`)
+          fetch(`http://194.60.231.96:8020//api/users/consultant/${data.consultant}/`)
             .then((r) => r.json())
             .then(setConsultant)
             .catch(() => setConsultant(null));
@@ -212,7 +212,7 @@ export default function PropertyDetailPage({ params }: { params: Promise<{ id: s
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden mb-8">
               <div className="relative" {...handlers}>
                 <img
-                  src={"https://api.amlakfallah.com" + property.images[activeImageIndex]}
+                  src={"http://194.60.231.96:8020/" + property.images[activeImageIndex]}
                   alt={property.title}
                   width={800}
                   height={500}
@@ -267,7 +267,7 @@ export default function PropertyDetailPage({ params }: { params: Promise<{ id: s
                         onClick={() => setActiveImageIndex(index)}
                       >
                         <img
-                          src={"https://api.amlakfallah.com" + img}
+                          src={"http://194.60.231.96:8020/" + img}
                           alt={`تصویر ${index + 1}`}
                           className="object-cover h-full"
                         />

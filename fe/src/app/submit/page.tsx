@@ -31,10 +31,10 @@ const PropertyFormPage = () => {
   const [districts, setDistricts] = useState<{ id: number; name: string }[]>([]);
 
     useEffect(() => {
-    fetch("https://api.amlakfallah.com/api/core/categories/")
+    fetch("http://194.60.231.96:8020//api/core/categories/")
       .then((r) => r.json())
       .then(setCategories);
-    fetch("https://api.amlakfallah.com/api/core/districts/")
+    fetch("http://194.60.231.96:8020//api/core/districts/")
       .then((r) => r.json())
       .then(setDistricts);
     return () => {
@@ -63,7 +63,7 @@ const handleSubmit = async (e: React.FormEvent) => {
     };
 
     try {
-      const res = await fetch("https://api.amlakfallah.com/api/prop/registered-property/create/", {
+      const res = await fetch("http://194.60.231.96:8020//api/prop/registered-property/create/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

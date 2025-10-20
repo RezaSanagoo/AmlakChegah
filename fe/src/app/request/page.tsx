@@ -21,10 +21,10 @@ const RequestPage = () => {
   const [notice, setNotice] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch("https://api.amlakfallah.com/api/core/categories/")
+    fetch("http://194.60.231.96:8020//api/core/categories/")
       .then((r) => r.json())
       .then(setCategories);
-    fetch("https://api.amlakfallah.com/api/core/districts/")
+    fetch("http://194.60.231.96:8020//api/core/districts/")
       .then((r) => r.json())
       .then(setDistricts);
   }, []);
@@ -69,7 +69,7 @@ const RequestPage = () => {
     };
 
     try {
-      const res = await fetch("https://api.amlakfallah.com/api/prop/interested-customer/create/", {
+      const res = await fetch("http://194.60.231.96:8020//api/prop/interested-customer/create/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
