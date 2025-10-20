@@ -13,7 +13,7 @@ services:
     expose:
       - 8010
     ports:
-      - "8010:8010"
+      - "8020:8010"
     networks:
       - chegah-network
     # env_file:
@@ -22,7 +22,7 @@ services:
   frontend:
     build: ./fe
     ports:
-      - 3010:3010
+      - 3020:3010
     networks:
       - chegah-network
     environment:
