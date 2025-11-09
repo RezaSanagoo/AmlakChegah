@@ -141,6 +141,15 @@ const handleSubmit = async (e: React.FormEvent) => {
     return Object.keys(newErrors).length === 0;
   };
 
+  // helper: نمایش قیمت با جداکننده هر سه رقم (برای نمایش در ورودی)
+  const formatWithThousandSeparator = (v: string) => {
+    if (!v) return "";
+    const digits = v.replace(/\D/g, "");
+    if (!digits) return "";
+    // use en-US grouping (commas). Change locale if you want different separator or locale-specific digits
+    return Number(digits).toLocaleString("en-US");
+  };
+
   const baseInputClass =
     "border rounded-xl px-4 py-3 focus:outline-none transition-all duration-200 bg-white/70 shadow-sm";
 
@@ -239,11 +248,15 @@ const handleSubmit = async (e: React.FormEvent) => {
                   </label>
                   <input
                     id="price"
-                    value={price}
-                    onChange={(e) => setPrice(e.target.value)}
-                    type="number"
-                    min={0}
-                    placeholder="مثال: 3500000000"
+                    value={formatWithThousandSeparator(price)}
+                    onChange={(e) => {
+                      // keep only digits in state, display formatted
+                      const digits = e.target.value.replace(/\D/g, "");
+                      setPrice(digits);
+                    }}
+                    type="text"
+                    inputMode="numeric"
+                    placeholder="مثال: 3,500,000,000"
                     className={`border rounded-xl px-4 py-3 ${errors.price ? "border-red-400 ring-2 ring-red-100" : "border-primary/30"} focus:ring-2 focus:ring-secendery/50`}
                     aria-invalid={!!errors.price}
                   />

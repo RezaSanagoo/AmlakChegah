@@ -144,8 +144,29 @@ function PropertyListSection() {
     setIsFilterOpen(false);
   };
 
+  // تابع فرمت هزارگان با ارقام انگلیسی
+  const formatNumber = (value: string | number) => {
+    if (!value) return "";
+    const num = typeof value === "string" ? Number(value.replace(/,/g, "")) : value;
+    if (isNaN(num)) return "";
+    return num.toLocaleString("en-US");
+  };
+
+  // فقط عدد را ذخیره کن و ارقام فارسی را به انگلیسی تبدیل کن
+  const toEnglishDigits = (str: string) => {
+    // تبدیل ارقام فارسی و عربی به انگلیسی
+    return str.replace(/[۰-۹]/g, (d) => String("۰۱۲۳۴۵۶۷۸۹".indexOf(d)))
+              .replace(/[٠-٩]/g, (d) => String("٠١٢٣٤٥٦٧٨٩".indexOf(d)));
+  };
+
   const handleFilterChange = (key: string, value: any) => {
-    setFilters((prev) => ({ ...prev, [key]: value }));
+    if (key === "minPrice" || key === "maxPrice") {
+      // حذف کاما و فقط عدد انگلیسی ذخیره شود
+      const raw = toEnglishDigits(value).replace(/[^\d]/g, "");
+      setFilters((prev) => ({ ...prev, [key]: raw }));
+    } else {
+      setFilters((prev) => ({ ...prev, [key]: value }));
+    }
   };
 
   const handleFeatureToggle = (id: number) => {
@@ -330,17 +351,21 @@ function PropertyListSection() {
                   </label>
                   <div className="flex gap-2">
                     <input
-                      type="number"
+                      type="text"
+                      inputMode="numeric"
+                      pattern="[0-9,]*"
                       placeholder="حداقل"
-                      value={filters.minPrice}
+                      value={formatNumber(filters.minPrice)}
                       onChange={(e) => handleFilterChange("minPrice", e.target.value)}
                       className="w-1/2 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary"
                       style={{ fontFamily: "var(--font-Ravi-bold)" }}
                     />
                     <input
-                      type="number"
+                      type="text"
+                      inputMode="numeric"
+                      pattern="[0-9,]*"
                       placeholder="حداکثر"
-                      value={filters.maxPrice}
+                      value={formatNumber(filters.maxPrice)}
                       onChange={(e) => handleFilterChange("maxPrice", e.target.value)}
                       className="w-1/2 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary"
                       style={{ fontFamily: "var(--font-Ravi-bold)" }}

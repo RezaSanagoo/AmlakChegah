@@ -38,6 +38,27 @@ const RequestPage = () => {
     setErrors({ ...errors, [e.target.name]: "" });
   };
 
+  // اضافه شده: توابع کمکی برای نرمال‌سازی ارقام فارسی/عربی، پاک‌سازی و فرمت سه‌رقمی
+  const normalizeDigits = (s: string) =>
+    s
+      // ارقام فارسی ۰-۹
+      .replace(/[\u06F0-\u06F9]/g, (d) => String(d.charCodeAt(0) - 0x06F0))
+      // ارقام عربی-هندی ٠-٩
+      .replace(/[\u0660-\u0669]/g, (d) => String(d.charCodeAt(0) - 0x0660));
+
+  const stripNonDigits = (s: string) => {
+    const normalized = normalizeDigits(s || "");
+    return normalized.replace(/\D/g, "");
+  };
+
+  const formatNumber = (s: string) => {
+    const digits = stripNonDigits(s);
+    if (!digits) return "";
+    // از Intl.NumberFormat برای جداکننده‌های سه‌رقمی استفاده می‌کنیم (ویرایش بصری)
+    return new Intl.NumberFormat("en-US").format(Number(digits));
+  };
+  
+
   const validate = () => {
     const newErrors: { [key: string]: string } = {};
     if (!formData.category) newErrors.category = "لطفاً نوع ملک را انتخاب کنید";
@@ -161,10 +182,14 @@ const RequestPage = () => {
                 حداقل بودجه (تومان)
               </label>
               <input
-                type="number"
+                type="text"
                 name="price_min"
-                value={formData.price_min}
-                onChange={handleChange}
+                value={formData.price_min ? formatNumber(formData.price_min) : ""}
+                onChange={(e) => {
+                  const digits = stripNonDigits(e.target.value);
+                  setFormData({ ...formData, price_min: digits });
+                  setErrors({ ...errors, price_min: "" });
+                }}
                 placeholder="مثلاً: ۵۰۰۰۰۰۰۰۰"
                 className="w-full border rounded-lg p-3 focus:outline-none border-gray-300 focus:ring focus:ring-blue-400"
               />
@@ -174,10 +199,14 @@ const RequestPage = () => {
                 حداکثر بودجه (تومان)
               </label>
               <input
-                type="number"
+                type="text"
                 name="price_max"
-                value={formData.price_max}
-                onChange={handleChange}
+                value={formData.price_max ? formatNumber(formData.price_max) : ""}
+                onChange={(e) => {
+                  const digits = stripNonDigits(e.target.value);
+                  setFormData({ ...formData, price_max: digits });
+                  setErrors({ ...errors, price_max: "" });
+                }}
                 placeholder="مثلاً: ۳۰۰۰۰۰۰۰۰۰"
                 className="w-full border rounded-lg p-3 focus:outline-none border-gray-300 focus:ring focus:ring-blue-400"
               />
