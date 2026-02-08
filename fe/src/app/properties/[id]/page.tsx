@@ -79,7 +79,7 @@ export default function PropertyDetailPage({ params }: { params: Promise<{ id: s
   // گرفتن اطلاعات ملک
   useEffect(() => {
     setLoading(true);
-    fetch(`http://194.60.231.96:8020//api/prop/property/${id}/`)
+    fetch(`http://194.60.231.96:8020/api/prop/property/${id}/`)
       .then(async (r) => {
         if (!r.ok) throw new Error("not found");
         return r.json();
@@ -88,7 +88,7 @@ export default function PropertyDetailPage({ params }: { params: Promise<{ id: s
         setProperty(data);
         setLoading(false);
         if (data.consultant) {
-          fetch(`http://194.60.231.96:8020//api/users/consultant/${data.consultant}/`)
+          fetch(`http://194.60.231.96:8020/api/users/consultant/${data.consultant}/`)
             .then((r) => r.json())
             .then(setConsultant)
             .catch(() => setConsultant(null));

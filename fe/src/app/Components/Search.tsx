@@ -35,7 +35,7 @@ export default function SearchBox() {
     setResults([]);
     try {
       const res = await fetch(
-        `http://194.60.231.96:8020//api/prop/property/search/?q=${encodeURIComponent(query)}`
+        `http://194.60.231.96:8020/api/prop/property/search/?q=${encodeURIComponent(query)}`
       );
       const data = await res.json();
       setResults(data);

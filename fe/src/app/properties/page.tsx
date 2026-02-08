@@ -65,13 +65,13 @@ function PropertyListSection() {
 
   // گرفتن دسته‌بندی‌ها، محله‌ها و امکانات
   useEffect(() => {
-    fetch("http://194.60.231.96:8020//api/core/categories/")
+    fetch("http://194.60.231.96:8020/api/core/categories/")
       .then((r) => r.json())
       .then(setCategories);
-    fetch("http://194.60.231.96:8020//api/core/districts/")
+    fetch("http://194.60.231.96:8020/api/core/districts/")
       .then((r) => r.json())
       .then(setDistricts);
-    fetch("http://194.60.231.96:8020//api/core/features/")
+    fetch("http://194.60.231.96:8020/api/core/features/")
       .then((r) => r.json())
       .then(setFeatures);
   }, []);
@@ -125,7 +125,7 @@ function PropertyListSection() {
     setLoading(true);
     const query = buildQuery();
     const res = await fetch(
-      `http://194.60.231.96:8020//api/prop/property/filter/${query}`,
+      `http://194.60.231.96:8020/api/prop/property/filter/${query}`,
       { cache: "no-store" }
     );
     const data = await res.json();
