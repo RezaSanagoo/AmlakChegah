@@ -109,9 +109,9 @@ const Footer = () => {
       className="w-full pt-10 px-4"
       style={{ background: "var(--color-hover-min)" }}
     >
-      <div className="max-w-[1168px] mx-auto mb-12 rounded-[20px] border border-[#C3C6CD] relative overflow-hidden h-56 bg-white">
+      <div className="max-w-[1168px] mx-auto mb-12 rounded-[20px] border border-[#C3C6CD] relative overflow-hidden h-60 bg-white">
         {/* محتوای متنی */}
-        <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center">
+        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center">
           <h2 className="text-3xl md:text-3xl font-extrabold text-primary mb-4">
             به خانواده چگاه بپیوندید!
           </h2>

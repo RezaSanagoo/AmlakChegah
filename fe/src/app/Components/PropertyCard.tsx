@@ -1,23 +1,29 @@
-import Image from "next/image";
+
 import Link from "next/link";
 import { IoBed, IoCarSport, IoBusiness, IoLocation } from "react-icons/io5";
 
-// ابزار ساده برای تبدیل اعداد به فارسی (اختیاری)
+// ابزار ساده برای تبدیل اعداد به فارسی و تبدیل جداکننده‌های هزارگان
 const toPersianDigits = (n: number | string) =>
   n
     .toString()
-    .replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[parseInt(d)]);
+    // تبدیل ارقام لاتین به فارسی
+    .replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[parseInt(d)])
+    // تبدیل ویرگول هزارگان به جداکننده فارسی (٬) و نقطه اعشاری به '٫'
+    .replace(/,/g, "٬")
+    .replace(/\./g, "٫");
 
-// فرمت قیمت
-const formatPrice = (price: number) =>
-  price ? `${price.toLocaleString()} میلیون تومان` : "قیمت توافقی";
+// فرمت قیمت: گروه‌بندی سه‌رقمی و افزودن واحد
+const formatPrice = (price?: number | null) =>
+  price || price === 0
+    ? `${toPersianDigits(Number(price).toLocaleString())} میلیون تومان`
+    : "قیمت توافقی";
 
 // چون داده‌ها ساده‌اند، پراپرتی را مستقیم می‌گیریم
 type Property = {
   code: string;
   title: string;
   price: number;
-  monthly_rent: number;
+  monthly_rent: number | null;
   category: string;
   district: string;
   area: number;
@@ -33,11 +39,10 @@ interface PropertyCardProps {
 const PropertyCard = ({ item }: PropertyCardProps) => {
   return (
     <div className="relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-primary/60 hover:scale-105">
-      
       <Link href={`/properties/${item.code}`} className="flex flex-col justify-between h-full">
         <div>
           <div className="relative overflow-hidden">
-          {item.image ? (
+            {item.image ? (
             <img
               src={"http://194.60.231.96:8020/" + item.image}
               alt={item.title}
@@ -49,35 +54,32 @@ const PropertyCard = ({ item }: PropertyCardProps) => {
             <div className="w-full h-56 flex items-center justify-center bg-gray-100 text-gray-400">
               بدون تصویر
             </div>
-          )}
-          <span className="absolute top-4 right-4 bg-primary text-white rounded-xl px-3 py-1 text-xs font-bold shadow">
-            {item.category}
-          </span>
-        </div>
-        <div className="p-6 pb-0">
-          
-          {item.monthly_rent == null && (
-          <h5 className="text-primary font-extrabold text-lg mb-4 tracking-tight">
-            قیمت: {toPersianDigits(formatPrice(item.price))}
-          </h5>
-          )}
-                    {item.monthly_rent != null && (
-          <h5 className="text-primary font-extrabold text-lg mb-2 tracking-tight">
-            ودیعه: {toPersianDigits(formatPrice(item.price))}
-          </h5>
-          )}
-          
-                    {item.monthly_rent != null && (
-          <h5 className="text-primary font-extrabold mb-4 tracking-tight">
-            اجاره ماهیانه: {toPersianDigits(item.monthly_rent)} میلیون تومان
-          </h5>
-          
-          )}
+            )}
+            <span className="absolute top-4 right-4 bg-primary text-white rounded-xl px-3 py-1 text-xs font-bold shadow">
+              {item.category}
+            </span>
+          </div>
+          <div className="p-6 pb-0">
+            {item.monthly_rent == null && (
+            <h5 className="text-primary font-extrabold text-lg mb-4 tracking-tight">
+              قیمت: {formatPrice(item.price)}
+            </h5>
+            )}
+            {item.monthly_rent != null && (
+              <h5 className="text-primary font-extrabold text-lg mb-2 tracking-tight">
+                ودیعه: {formatPrice(item.price)}
+              </h5>
+            )}
+            {item.monthly_rent != null && (
+              <h5 className="text-primary font-extrabold mb-4 tracking-tight">
+                اجاره ماهیانه: {formatPrice(item.monthly_rent)}
+              </h5>
+            )}
 
           <div className="flex items-center gap-2 mb-4">
             <span className="text-sm text-gray-600">کد ملک:</span>
             <span className="bg-primary/10 text-primary px-3 py-1 rounded-lg font-medium text-sm">
-              {item.code}
+              {toPersianDigits(item.code)}
             </span>
           </div>
           <div className="font-bold text-gray-800 text-base mb-3 leading-relaxed">

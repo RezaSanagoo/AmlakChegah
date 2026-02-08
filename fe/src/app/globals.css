@@ -22,8 +22,8 @@
 
 @theme {
   --color-white: #ffffff;
-  --color-primary: #192a51;
-  --color-secendery: #967aa1;
+  --color-primary: #27334f;
+  --color-secendery: #CBA0E3;
   --color-hover: #aaa1c8;
   --color-hover-min: #D5C6E0;
   --color-gradient: linear-gradient(to right top, #967aa1, #192a51);
